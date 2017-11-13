@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="copyright" content="chanjetpay.com"
+	      th:content="#{meta.copyright}">
+	<meta name="keywords" content="蒜苔，聚餐，美食，点菜，餐饮服务，扫码点餐，扫码预约，扫码排队，扫码结账"
+	      th:content="#{meta.keywords}">
+	<meta name="description" content="专注于移动web的智能餐饮服务平台"
+	      th:content="#{meta.description}" >
+	<meta name="author" content="bao.li.net@hotmail.com"
+	      th:content="#{meta.author}" >
+	
+	<link rel="icon" href="garlic_32px.ico" type="image/x-icon"
+	      th:href="@{/garlic_32px.ico}" />
+	
+	<link rel="stylesheet" href="../static/pure/v1.0/pure-min.css"
+	      th:href="@{/pure/v1.0/pure-min.css}" />
+	
+	<link rel="stylesheet" href="../static/pure/css/modal.css"
+	      th:href="@{/pure/css/modal.css}">
+	
+	<!--[if lte IE 8]>
+	<link rel="stylesheet" href="../static/pure/v1.0/grids-responsive-old-ie-min.css"
+	      th:href="@{/pure/v1.0/grids-responsive-old-ie-min.css}"/>
+	<![endif]-->
+	<!--[if gt IE 8]><!-->
+	<link rel="stylesheet" href="../static/pure/v1.0/grids-responsive-min.css"
+	      th:href="@{/pure/v1.0/grids-responsive-min.css}" />
+	<!--<![endif]-->
+	
+	<!--[if lte IE 8]>
+	<link rel="stylesheet" href="../static/pure/css/layouts/marketing-old-ie.css"
+	      th:href="@{/pure/css/layouts/marketing-old-ie.css}" />
+	
+	<link rel="stylesheet" href="../static/pure/css/layouts/pricing-old-ie.css"
+	      th:href="@{/pure/css/layouts/pricing-old-ie.css}"/>
+	<![endif]-->
+	<!--[if gt IE 8]><!-->
+	<link rel="stylesheet" href="../static/pure/css/layouts/marketing.css"
+	      th:href="@{/pure/css/layouts/marketing.css}" />
+	
+	<link rel="stylesheet" href="../static/pure/css/layouts/pricing.css"
+	      th:href="@{/pure/css/layouts/pricing.css}" />
+	<!--<![endif]-->
+	
+	<title th:text="#{title.application}">蒜苔网-智能社区服务平台</title>
+</head>
+<body>
+
+<div class="header" th:replace="~{layout/fragment::common_menu('about')}">
+	<div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
+		<a class="pure-menu-heading" href="javascript:void(0);">蒜苔</a>
+		<ul class="pure-menu-list">
+			<li class="pure-menu-item"><a href="javascript:void(0);" class="pure-menu-link">首页</a></li>
+			<li class="pure-menu-item"><a href="javascript:void(0);" class="pure-menu-link">演示</a></li>
+			<li class="pure-menu-item pure-menu-selected"><a href="javascript:void(0);" class="pure-menu-link">关于</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="content">
+	
+	<div class="content-body pricing-tables pure-g">
+		<div class="pure-u-1 pure-u-md-1-2">
+			<img width="300" alt="pic" class="pure-img-responsive" src="../static/team.jpg" th:attr="src=@{/team.jpg}">
+		</div>
+		
+		<div class="pure-u-1 pure-u-md-1-2">
+			<h3 class="information-head">团队介绍</h3>
+			<p class="left-align">专业的电商，金融，支付等相关行业研发、产品与业务共同组成<br>
+				致力于为社区周边中小微商户提供业务互联网化解决方案<br>
+				围绕人们生活服务，打造智慧社区<br>
+				项目成立于2017年11月</p>
+			</ul>
+		</div>
+		
+		
+		<div class="pure-u-1 pure-u-md-2-3">
+			<h3>联系方式</h3>
+			<div class="pure-g">
+				<div class="pure-u-1 pure-u-md-1-5"></div>
+				<div class="pure-u-1 pure-u-md-3-5 left-align">
+					<img width="32" height="32" src="../static/pure/img/common/telphone.jpg"
+					     th:attr="src=@{/pure/img/common/telphone.jpg}">
+					<span>13488746533</span>
+					<br>
+					<img width="32" height="32" src="../static/pure/img/common/email.jpg"
+					     th:attr="src=@{/pure/img/common/email.jpg}">
+					<span>bao.li.net@hotmail.com</span>
+					<br>
+					<img width="32" height="32" src="../static/pure/img/common/qq.jpg"
+					     th:attr="src=@{/pure/img/common/qq.jpg}">
+					<span>19397803</span>
+					<br>
+					<img width="32" height="32" src="../static/pure/img/common/weixin.jpg"
+					     th:attr="src=@{/pure/img/common/weixin.jpg}">
+					<span>q19397803</span>
+				</div>
+				<div class="pure-u-1 pure-u-md-1-5"></div>
+			</div>
+		</div>
+		
+		<div class="pure-u-1 pure-u-md-1-3">
+			<h3>常见问题</h3>
+			<div class="pure-g">
+				<div class="pure-u-1"><a href="#">如何使用</a></div>
+				<div class="pure-u-1"><a href="javascript:void(0);">注册流程</a></div>
+				<div class="pure-u-1">授权方式</div>
+				<div class="pure-u-1">123</div>
+				<div class="pure-u-1">123</div>
+			</div>
+		</div>
+	
+	</div> <!-- end pricing-tables -->
+	
+	<style>
+		.content-body {
+			max-width: 980px;
+			margin: 100px auto;
+		}
+		
+		a {
+			color: #015fb6; /* block-normal-text-normal */
+			background-color: transparent;
+			text-decoration: underline;
+		}
+		
+		a:visited {
+			color: #808080; /* block-normal-text-normal */
+		}
+		
+		.left-align {
+			text-align: left;
+		}
+	
+	</style>
+	
+	<div th:replace="~{layout/fragment :: common_copy}" class="footer l-box is-center">
+		<label>© 2015-2017 蒜苔网版权所有</label>
+		<a href="javascript:void(0);">联系方法</a>
+		<a href="javascript:void(0);">隐私政策</a>
+		<a href="javascript:void(0);">意见反馈</a>
+	</div>
+</div>
+</body>
+</html>
