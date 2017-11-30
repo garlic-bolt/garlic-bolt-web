@@ -9,7 +9,7 @@
 	<packaging>war</packaging>
 
 	<name>garlic-bolt-web</name>
-	<description>智能社区平台</description>
+	<description>智慧生活-商户版</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -34,7 +34,6 @@
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -50,6 +49,28 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>com.netflix.feign</groupId>
+			<artifactId>feign-core</artifactId>
+			<version>8.18.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.netflix.feign</groupId>
+			<artifactId>feign-jackson</artifactId>
+			<version>8.18.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.chanjetpay.garlic</groupId>
+			<artifactId>garlic-bolt-api</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/garlic-bolt-api-1.0-SNAPSHOT.jar</systemPath>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>
