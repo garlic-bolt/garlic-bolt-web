@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/fragment::common_header(~{::link},~{::script})}">
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<title>FrozenUI Demo</title>
+	<link rel="stylesheet" href="../static/css/frozen.css">
+	<script src="../static/lib/zepto.min.js"></script>
+	<script src="../static/js/frozen.js"></script>
+</head>
+
+<body ontouchstart>
+
+<header class="ui-header ui-header-positive ui-border-b">
+	<h1>xxx餐厅-服务员1</h1>
+</header>
+
+<section class="ui-container">
+	<section id="grid">
+			<ul class="ui-grid-halve">
+				<li>
+					<div class="ui-grid-halve-img">
+						<span style="background-image:url(../static/reserve.png)" th:onclick="|linkto('${link1}')|"
+						      th:style="'background-image:url(' + @{/reserve.png} + ')'"></span>
+					</div>
+				</li>
+				<li>
+					<div class="ui-grid-halve-img">
+						<span style="background-image:url(../static/点餐.png)" th:style="|background-image:url(@{/reserve.png})|"></span>
+					</div>
+				</li>
+				<li>
+					<div class="ui-grid-halve-img">
+						<span style="background-image:url(../static/结账.png)"></span>
+					</div>
+				</li>
+				<li>
+					<div class="ui-grid-halve-img">
+						<span style="background-image:url(../static/发票.png)"></span>
+					</div>
+				</li>
+			</ul>
+	</section>
+</section>
+
+<script type="text/javascript">
+	function linkto(link){
+		location.href=link;
+	}
+	
+</script>
+</body>
+</html>
