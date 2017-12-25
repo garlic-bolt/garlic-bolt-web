@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+	<property name="app_name" value="garlic-web" />
+	<contextName>${app_name}</contextName>
+
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%-4relative %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{40} - %msg %n</pattern>
+<!--			<charset>UTF-8</charset>-->
+		</encoder>
+	</appender>
+
+	<appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>logs/${app_name}.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${app_name}.%d{yyyy-MM-dd}.%i.zip</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>30MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+
+		<encoder>
+			<Pattern>%-4relative %d{HH:mm:ss.SSS} [%thread] %-5level %logger{40} - %msg %n</Pattern>
+<!--			<charset>UTF-8</charset>-->
+		</encoder>
+	</appender>
+
+	<logger name="com.chanjetpay.garlic" level="INFO" />
+
+	<logger name="org.mybatis.spring" level="INFO" />
+	<logger name="org.apache.ibatis" level="TRACE" />
+	<logger name="java.sql.PreparedStatement" level="DEBUG" />
+	<logger name="java.sql.Statement" level="DEBUG" />
+	<logger name="java.sql.Connection" level="DEBUG" />
+	<logger name="java.sql.ResultSet" level="DEBUG" />
+
+	<logger name="com.alibaba" level="INFO" />
+	<logger name="org.apache.zookeeper" level="INFO" />
+	<logger name="org.springframework" level="INFO" />
+	<logger name="org.quartz" level="INFO" />
+
+	<logger name="com.mchange.v2" level="INFO" />
+	<logger name="net.sf.ehcache" level="INFO" />
+	<logger name="org.apache.velocity" level="INFO" />
+	<logger name="org.mongodb.driver" level="INFO" />
+
+	<root level="DEBUG">
+		<appender-ref ref="console" />
+		<appender-ref ref="file" />
+	</root>
+</configuration>

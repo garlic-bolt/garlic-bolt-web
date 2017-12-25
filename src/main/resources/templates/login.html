@@ -22,19 +22,22 @@
 		<div class="ui-col ui-col-1"></div>
 		<div class="ui-col">
 			<div class="ui-form ui-border-t">
-				<form action="/uri">
+				<form action="" method="post" th:action="@{/login}">
 					<div class="ui-form-item ui-form-item-pure ui-border-b">
-						<input type="text" placeholder="QQ号/手机号/邮箱">
-						<a href="#" class="ui-icon-close"></a>
+						<input type="text" name="loginName" placeholder="QQ号/手机号/邮箱">
+						<a href="javascript:void(0)" class="ui-icon-close"></a>
 					</div>
 					<div class="ui-form-item ui-form-item-pure ui-border-b">
-						<input type="password" placeholder="密码">
+						<input type="password" name="password" placeholder="密码">
 						<a href="#" class="ui-icon-close"></a>
 					</div>
 					<div class="ui-btn-wrap">
 						<button class="ui-btn-lg ui-btn-primary" type="submit">
 							登录
 						</button>
+					</div>
+					<div class="ui-btn-wrap">
+						<p class="ui-txt-warning" th:text="${message}">警示，会员红名</p>
 					</div>
 				</form>
 			</div>

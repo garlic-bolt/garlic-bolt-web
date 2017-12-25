@@ -20,6 +20,7 @@
 
 	<properties>
 		<file.name>ROOT</file.name>
+		<profiles.dir>src/profiles</profiles.dir>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.7</java.version>
@@ -28,7 +29,6 @@
 	</properties>
 
 	<dependencies>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -62,14 +62,12 @@
 			<version>8.18.0</version>
 		</dependency>
 
+		<!-- shiro dependency -->
 		<dependency>
-			<groupId>com.chanjetpay.garlic</groupId>
-			<artifactId>garlic-bolt-api</artifactId>
-			<version>1.0-SNAPSHOT</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/garlic-bolt-api-1.0-SNAPSHOT.jar</systemPath>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring</artifactId>
+			<version>1.4.0</version>
 		</dependency>
-
 
 	</dependencies>
 
@@ -81,7 +79,107 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<excludes>
+					<exclude>static/font/**</exclude>
+				</excludes>
+			</resource>
+			<!-- fonts file cannot use filter as the data structure of byte file will be changed via filter -->
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+				<includes>
+					<include>static/font/**</include>
+				</includes>
+			</resource>
+		</resources>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>local</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<resources>
+					<resource>
+						<directory>${profiles.dir}/local</directory>
+					</resource>
+				</resources>
+			</build>
+			<dependencies>
+				<dependency>
+					<groupId>com.chanjetpay.garlic</groupId>
+					<artifactId>garlic-bolt-api</artifactId>
+					<version>1.0-SNAPSHOT</version>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
+			<id>openshift</id>
+			<build>
+				<resources>
+					<resource>
+						<directory>${profiles.dir}/openshift</directory>
+					</resource>
+				</resources>
+			</build>
+			<dependencies>
+				<dependency>
+					<groupId>com.chanjetpay.garlic</groupId>
+					<artifactId>garlic-bolt-api</artifactId>
+					<version>1.0-SNAPSHOT</version>
+					<scope>system</scope>
+					<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/garlic-bolt-api-1.0-SNAPSHOT.jar</systemPath>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
+			<id>betaa</id>
+			<build>
+				<resources>
+					<resource>
+						<directory>${profiles.dir}/betaa</directory>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+		<profile>
+			<id>betab</id>
+			<build>
+				<resources>
+					<resource>
+						<directory>${profiles.dir}/betab</directory>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+		<profile>
+			<id>proda</id>
+			<build>
+				<resources>
+					<resource>
+						<directory>${profiles.dir}/proda</directory>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+		<profile>
+			<id>prodb</id>
+			<build>
+				<resources>
+					<resource>
+						<directory>${profiles.dir}/prodb</directory>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+	</profiles>
 
 
 </project>
