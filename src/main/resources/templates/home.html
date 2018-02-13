@@ -1,62 +1,140 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{layout/fragment::common_header(~{::link},~{::script})}">
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
 	<meta name="format-detection" content="telephone=no">
-	<title>FrozenUI Demo</title>
-	<link rel="stylesheet" href="../static/css/frozen.css">
-	<script src="../static/lib/zepto.min.js"></script>
-	<script src="../static/js/frozen.js"></script>
+	<title>智慧生活-客户端</title>
+	<link rel="stylesheet" href="../static/css/frozen.css" th:href="@{/css/frozen.css}">
+	
+	<link rel="stylesheet" href="../static/css/demo.css" th:href="@{/css/demo.css}">
+	
+	<script src="../static/lib/zepto.min.js" th:src="@{/lib/zepto.min.js}"></script>
+	<script src="../static/js/frozen.js" th:src="@{/js/frozen.js}"></script>
 </head>
 
 <body ontouchstart>
-
 <header class="ui-header ui-header-positive ui-border-b">
-	<h1>xxx餐厅-服务员1</h1><button class="ui-btn" onclick="logoff()">退出</button>
+	<i class="ui-icon-return" onclick="history.back()"></i>
+	<h1>智慧生活</h1>
 </header>
 
 <section class="ui-container">
-	<section id="grid">
-			<ul class="ui-grid-halve">
-				<li>
-					<div class="ui-grid-halve-img">
-						<span style="background-image:url(../static/reserve.png)" th:onclick="|linkto('${link1}')|" th:style="'background-image:url(' + @{/reserve.png} + ')'"></span>
-					</div>
-				</li>
-				<li>
-					<div class="ui-grid-halve-img">
-						<span style="background-image:url(../static/点餐.png)" th:style="|background-image:url(@{/reserve.png})|"></span>
-					</div>
-				</li>
-				<li>
-					<div class="ui-grid-halve-img">
-						<span style="background-image:url(../static/结账.png)" th:style="|background-image:url(@{/reserve.png})|"></span>
-					</div>
-				</li>
-				<li>
-					<div class="ui-grid-halve-img">
-						<span style="background-image:url(../static/发票.png)" th:style="|background-image:url(@{/reserve.png})|"></span>
-					</div>
-				</li>
-			</ul>
-	</section>
-</section>
-
-<script type="text/javascript" th:inline="javascript">
-	/*<![CDATA[*/
+	<marquee><h6 class="ui-txt-highlight">系统维护中。。。</h6></marquee>
+	<ul class="ui-tiled">
+		<li>
+			<a href="#">
+				<div class="ui-tag-vip">
+					<img class="ui-avatar-lg" src="../static/liuwei.jpg">
+				</div>
+				<span>李宝</span>
+			</a>
+		</li>
+	</ul>
 	
-	function linkto(link){
-		location.href=link;
-	}
-
-  var logoffUrl = /*[[@{/logout}]]*/ '/logoffurl';
+	<ul class="ui-tiled">
+		<li>
+			<a href="#">
+				<div>0元</div>
+				<i class="ui-reddot">余额 ></i>
+			</a>
+		</li>
+		
+		<li>
+			<a href="#">
+				<div>0张</div>
+				<i>优惠券 ></i>
+			</a>
+		</li>
+	</ul>
 	
-  function logoff() {
-			location.href=logoffUrl;
-  }
-  /*]]>*/
-</script>
+	<p class="demo-desc">交易记录</p>
+	<ul class="ui-list ui-list-text ui-border-tb">
+		<li class="ui-border-t">
+			<div class="ui-list-info">
+				<h4 class="ui-nowrap">-10.00 老街口超市-消费</h4>
+				<h5 class="ui-nowrap">1月22日 22:01</h5>
+			</div>
+			<div class="ui-badge">new</div>
+		</li>
+		<li class="ui-border-t">
+			<div class="ui-list-info">
+				<h4 class="ui-nowrap">2018.1.22 获取优惠券 消费 10元</h4>
+			</div>
+			<div class="ui-badge-muted">new</div>
+		</li>
+		<li class="ui-border-t">
+			<div class="ui-list-info">
+				<h4 class="ui-nowrap">这是标题，加ui-nowrap可以超出长度截断</h4>
+			</div>
+			<div class="ui-badge-num">123</div>
+		</li>
+		<li class="ui-border-t">
+			<div class="ui-list-info">
+				<h4 class="ui-nowrap">这是标题，加ui-nowrap可以超出长度截断</h4>
+			</div>
+			<div class="ui-reddot ui-reddot-static"></div>
+		</li>
+		<li class="ui-border-t">
+			<div class="ui-list-info">
+				<h4>标题标题标题标题标题标题标</h4>
+			</div>
+			<div class="ui-list-action">使用中</div>
+		</li>
+		<li class="ui-border-t">
+			<div class="ui-list-info">
+				<h4>标题标题标题标题标题标题标</h4>
+			</div>
+			<label class="ui-switch">
+				<input type="checkbox">
+			</label>
+		</li>
+		
+		
+		<li class="ui-border-t">
+			<div class="ui-list-info">
+				<h4 class="ui-nowrap">-10.00 老街口超市-消费</h4>
+				<h5 class="ui-nowrap">1月22日 22:01</h5>
+			</div>
+			<div class="ui-badge">new</div>
+		</li>
+		<li class="ui-border-t">
+			<div class="ui-list-info">
+				<h4 class="ui-nowrap">2018.1.22 获取优惠券 消费 10元</h4>
+			</div>
+			<div class="ui-badge-muted">new</div>
+		</li>
+		<li class="ui-border-t">
+			<div class="ui-list-info">
+				<h4 class="ui-nowrap">这是标题，加ui-nowrap可以超出长度截断</h4>
+			</div>
+			<div class="ui-badge-num">123</div>
+		</li>
+		<li class="ui-border-t">
+			<div class="ui-list-info">
+				<h4 class="ui-nowrap">这是标题，加ui-nowrap可以超出长度截断</h4>
+			</div>
+			<div class="ui-reddot ui-reddot-static"></div>
+		</li>
+		<li class="ui-border-t">
+			<div class="ui-list-info">
+				<h4>标题标题标题标题标题标题标</h4>
+			</div>
+			<div class="ui-list-action">使用中</div>
+		</li>
+		<li class="ui-border-t">
+			<div class="ui-list-info">
+				<h4>标题标题标题标题标题标题标</h4>
+			</div>
+			<label class="ui-switch">
+				<input type="checkbox">
+			</label>
+		</li>
+		
+	</ul>
+	
+
+</section><!-- /.ui-container-->
 </body>
 </html>

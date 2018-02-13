@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>智慧生活-客户端</title>
+    <link rel="stylesheet" href="../static/css/frozen.css" th:href="@{/css/frozen.css}">
+    
+    <link rel="stylesheet" href="../static/css/demo.css" th:href="@{/css/demo.css}">
+    
+    <script src="../static/lib/zepto.min.js" th:src="@{/lib/zepto.min.js}"></script>
+    <script src="../static/js/frozen.js" th:src="@{/js/frozen.js}"></script>
+</head>
+
+<body ontouchstart>
+<header class="ui-header ui-header-positive ui-border-b">
+    <i class="ui-icon-return" onclick="history.back()"></i>
+    <h1>智慧生活</h1>
+</header>
+
+<section class="ui-container">
+    <div class="ui-flex ui-flex-pack-center ui-flex-align-center">
+        <li><div>可用余额</div>
+            <h1>￥100.00</h1>
+        </li>
+    </div>
+    
+    
+    <ul class="ui-tiled">
+        <li><i class="ui-icon-add"></i><div>充值</div></li>
+        <li><i class="ui-icon-share"></i><div>提现</div></li>
+        <li><i class="ui-icon-refresh"></i><div>借款</div></li>
+    </ul>
+    
+    <ul class="ui-list ui-list-link ui-border-tb">
+        <li class="ui-border-t">
+            <div class="ui-list-img">
+                <span style="background-image:url(http://placeholder.qiniudn.com/200x136)"></span>
+            </div>
+            <div class="ui-list-info">
+                <h4 class="ui-nowrap">这是标题，加ui-nowrap可以超出长度截断</h4>
+                <p class="ui-nowrap">这是内容，加ui-nowrap可以超出长度截断</p>
+            </div>
+        </li>
+        
+        
+        <li class="ui-border-t">
+            <div class="ui-list-img">
+                <span style="background-image:url(http://placeholder.qiniudn.com/200x136)"></span>
+            </div>
+            <div class="ui-list-info">
+                <h4>标题标题标题标题标题标题标题标题标题标题标题</h4>
+            </div>
+        </li>
+    
+    </ul>
+    
+    <button class="ui-btn-lg">
+        添加银行卡
+    </button>
+
+
+
+
+
+</section><!-- /.ui-container-->
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<title>智慧生活-客户版</title>
+	<link rel="stylesheet" href="../static/css/frozen.css" th:href="@{/css/frozen.css}">
+	
+	<link rel="stylesheet" href="../static/css/demo.css" th:href="@{/css/demo.css}">
+	
+	<script src="../static/lib/zepto.min.js" th:src="@{/lib/zepto.min.js}"></script>
+	<script src="../static/js/frozen.js" th:src="@{/js/frozen.js}"></script>
+</head>
+
+<body ontouchstart>
+<header class="ui-header ui-header-positive ui-border-b">
+	<i class="ui-icon-return" onclick="history.back()"></i>
+	<h1>用户认证</h1>
+</header>
+
+<section class="ui-container">
+	
+	<section id="form">
+		<p class="demo-desc">手机认证</p>
+		<div class="ui-form ui-border-t">
+			<form action="#" method="post">
+				<div class="ui-form-item ui-form-item-l ui-border-b">
+					<label class="ui-border-l">
+						中国 +86
+					</label>
+					<input type="text" placeholder="请输入手机号码">
+					<a href="#" class="ui-icon-close"></a>
+				</div>
+				
+				<div class="ui-form-item ui-form-item-r ui-border-b">
+					<input type="text" placeholder="请输入验证码">
+					<!-- 若按钮不可点击则添加 disabled 类 -->
+					<button type="button" class="ui-border-l">发送验证码</button>
+					<a href="#" class="ui-icon-close"></a>
+				</div>
+				
+				<div class="ui-btn-wrap">
+					<button class="ui-btn-lg ui-btn-primary">确认</button>
+				</div>
+			
+			</form>
+		</div>
+		
+	</section>
+
+</section><!-- /.ui-container-->
+</body>
+</html>

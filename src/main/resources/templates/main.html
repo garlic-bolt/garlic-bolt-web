@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/fragment::common_header(~{::link},~{::script})}">
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<title>FrozenUI Demo</title>
+	<link rel="stylesheet" href="../static/css/frozen.css">
+	<script src="../static/lib/zepto.min.js"></script>
+	<script src="../static/js/frozen.js"></script>
+	
+	<!--[if lt IE 10]>
+	<script src="//cdn.bootcss.com/html5shiv/r29/html5.min.js"></script>
+	<script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+	<script src="//cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
+	<![endif]-->
+	
+	
+</head>
+
+<body ontouchstart>
+
+<header class="ui-header ui-header-positive ui-border-b">
+	<h1>xxx餐厅-服务员1</h1><button class="ui-btn" onclick="logoff()">退出</button>
+</header>
+
+<section class="ui-container">
+	<section id="grid">
+			<ul class="ui-grid-halve">
+				<li>
+					<div class="ui-grid-halve-img">
+						<span><a href="#"><img src="../static/book.png" /></a></span>
+					<!-- <span style="background-image:url(../static/order.png)" th:style="|background-image:url(@{/reserve.png})|"></span>-->
+					</div>
+				</li>
+				<li>
+					<div class="ui-grid-halve-img">
+						<span><a href="#"><img src="../static/order.png" /></a></span>
+					</div>
+				</li>
+				<li>
+					<div class="ui-grid-halve-img">
+						<span><a href="#"><img src="../static/check.png" /></a></span>
+					</div>
+				</li>
+				<li>
+					<div class="ui-grid-halve-img">
+						<span><a href="#"><img src="../static/invoice.png" /></a></span>
+					</div>
+				</li>
+			</ul>
+	</section>
+</section>
+
+<script type="text/javascript" th:inline="javascript">
+	/*<![CDATA[*/
+	
+	function linkto(link){
+		location.href=link;
+	}
+
+  var logoffUrl = /*[[@{/logout}]]*/ '/logoffurl';
+	
+  function logoff() {
+			location.href=logoffUrl;
+  }
+  /*]]>*/
+</script>
+</body>
+</html>

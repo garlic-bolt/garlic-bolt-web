@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -22,9 +21,9 @@
 		<div class="ui-col ui-col-1"></div>
 		<div class="ui-col">
 			<div class="ui-form ui-border-t">
-				<form action="" method="post" th:action="@{/login}">
+				<form action="" method="post" th:action="${#request.requestURI}">
 					<div class="ui-form-item ui-form-item-pure ui-border-b">
-						<input type="text" name="loginName" placeholder="QQ号/手机号/邮箱">
+						<input type="text" name="loginName" placeholder="手机号/邮箱">
 						<a href="javascript:void(0)" class="ui-icon-close"></a>
 					</div>
 					<div class="ui-form-item ui-form-item-pure ui-border-b">
@@ -37,7 +36,7 @@
 						</button>
 					</div>
 					<div class="ui-btn-wrap">
-						<p class="ui-txt-warning" th:text="${message}">警示，会员红名</p>
+						<p class="ui-txt-warning" th:if="${message}" th:text="${message}">警示，会员红名</p>
 					</div>
 				</form>
 			</div>

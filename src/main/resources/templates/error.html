@@ -1,10 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+
 <head>
-	<meta charset="UTF-8">
-	<title>Title</title>
+	<meta charset="utf-8" />
+	<meta name="author" content="ISUX" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="viewport" content="width=device-width, user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<title>FrozenUI组件库</title>
+	
+	<link rel="stylesheet" type="text/css" href="../static/css/frozen.css">
+<!--	<style>
+		body>a{display: none;}
+		.title { padding-left: 15px; line-height: 48px; font-size: 20px; color:
+				#00A5E3; }
+	</style>-->
 </head>
-<body>
-error
+
+<body ontouchstart="">
+
+<th:block th:inline="text">
+	
+	${exception} or ${message}
+	
+	<br/>[(#{ctx})]	上下文对象
+	<br/>[(#{vars})]	上下文对象(和#ctx相同, 但是一般用#ctx)
+	<br/>[(#{locale})]	上下文区域设置
+	<br/>[(#{request})]	(仅在Web Contexts中) HttpServletRequest对象
+	<br/>[(#{response})]	(仅在Web Contexts中) HttpServletResponse对象
+	<br/>[(#{session})]	(仅在Web Contexts中) HttpSession对象
+	<br/>[(#{servletContext})]	(仅在Web Contexts中) ServletContext对象
+	<br/>
+	<br/>[(#{execInfo})]	有关正在处理的模板的信息
+	<br/>[(#{messages})]	用于在变量表达式中获取外部化消息的方法, 与使用#{...}语法获得的方式相同
+	<br/>[(#{uris})]	转义 URL / URI 部分的方法
+	<br/>[(#{conversions})]	执行配置的转换服务(如果有的话)的方法
+	<br/>[(#{dates	java.util.Date})]对象的方法: 格式化, 组件提取等
+	<br/>[(#{calendars	java.util.Calendar})]对象, 类似于#dates
+	<br/>[(#{numbers})]	用于格式化数字对象的方法
+	<br/>[(#{strings})]	String对象的方法: contains, startsWith, prepending, appending等
+	<br/>[(#{objects})]	一般对象的方法
+	<br/>[(#{bools})]	布尔评估的方法
+	<br/>[(#{arrays})]	数组的方法
+	<br/>[(#{lists})]	列表的方法
+	<br/>[(#{sets})]	集合的方法
+	<br/>[(#{maps})]	map方法
+	<br/>[(#{aggregates})]	在数组或集合上创建聚合的方法
+	<br/>[(#{ids})]	处理可能重复的id属性的方法
+</th:block>
+
+
 </body>
+
 </html>
