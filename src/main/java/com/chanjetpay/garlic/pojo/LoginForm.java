@@ -1,4 +1,4 @@
-package com.chanjetpay.garlic.form;
+package com.chanjetpay.garlic.pojo;
 
 import com.sun.org.apache.bcel.internal.classfile.Code;
 

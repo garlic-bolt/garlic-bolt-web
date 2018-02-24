@@ -26,4 +26,9 @@ public class IndexController {
 	//public String error() {
 	//	return "error";
 	//}
+
+	@RequestMapping(value = "/test-home", method = RequestMethod.GET)
+	public String testHome(){
+		return "home";
+	}
 }

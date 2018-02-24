@@ -3,7 +3,7 @@ package com.chanjetpay.garlic.web;
 import com.chanjetpay.garlic.common.CookieUtils;
 import com.chanjetpay.garlic.common.OperatorLogin;
 import com.chanjetpay.garlic.common.ResourceBundleUtils;
-import com.chanjetpay.garlic.form.LoginForm;
+import com.chanjetpay.garlic.pojo.LoginForm;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

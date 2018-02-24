@@ -1,6 +1,8 @@
 package com.chanjetpay;
 
 import com.chanjetpay.garlic.api.OfficialService;
+import com.chanjetpay.garlic.api.OperatorService;
+import com.chanjetpay.garlic.dto.OperatorDto;
 import com.chanjetpay.garlic.dto.WxOauth2Dto;
 import com.chanjetpay.garlic.dto.WxOfficialSignDto;
 import com.chanjetpay.garlic.dto.WxUserDto;
@@ -38,6 +40,21 @@ public class OfficialServiceFeignTest {
 		WxOauth2Dto wxOauth2 = new WxOauth2Dto("1234","abcd");
 		GenericResult<WxOauth2Dto> result = officialService.wxOfficialCode("1234",wxOauth2);
 		logger.info("" + result);
+	}
+
+
+	@Autowired
+	private OperatorService operatorService;
+
+	@Test
+	public void testCreateOperator(){
+		OperatorDto operatorDto = new OperatorDto();
+		operatorDto.setBlockId("1234");
+		operatorDto.setOperatorId("zhangsan");
+		operatorDto.setPassword("zhangsan123");
+		operatorDto.setSalt("abcd");
+
+		operatorService.create("1234",operatorDto);
 	}
 
 }

@@ -22,11 +22,16 @@
 
 <section class="ui-container">
 	<marquee><h6 class="ui-txt-highlight">系统维护中。。。</h6></marquee>
+	
+	<h1>长连接测试</h1>
+	<h2 id="n1"></h2>
+	<h2 id="n2"></h2>
+	
 	<ul class="ui-tiled">
 		<li>
 			<a href="#">
 				<div class="ui-tag-vip">
-					<img class="ui-avatar-lg" src="../static/liuwei.jpg">
+					<img class="ui-avatar-lg" src="../static/liuwei.jpg" th:src="@{/liuwei.jpg}">
 				</div>
 				<span>李宝</span>
 			</a>
@@ -136,5 +141,38 @@
 	
 
 </section><!-- /.ui-container-->
+
+
+<script type="text/javascript">
+	$(function(){
+		// function longPolling1(){
+		// 	$.get('comet/123/test', function(data){
+		// 		console.log(data);
+		// 		$('#n2').html(data);
+		// 		longPolling();
+		// 	});
+		// }
+		// longPolling();
+		
+		
+		function longPooling2(){
+			$.get('comet/12345/test2', function(data){
+				console.log(data);
+				$('#n1').html(data);
+			});
+		}
+
+	  var ref = setInterval(function(){
+			longPooling2();
+	  },10000);
+		
+	});
+	
+	
+	
+	
+</script>
+</head>
+
 </body>
 </html>
