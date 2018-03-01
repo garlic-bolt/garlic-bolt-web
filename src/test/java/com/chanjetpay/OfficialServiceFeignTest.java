@@ -5,8 +5,6 @@ import com.chanjetpay.garlic.api.OperatorService;
 import com.chanjetpay.garlic.dto.OperatorDto;
 import com.chanjetpay.garlic.dto.WxOauth2Dto;
 import com.chanjetpay.garlic.dto.WxOfficialSignDto;
-import com.chanjetpay.garlic.dto.WxUserDto;
-import com.chanjetpay.result.BasicResult;
 import com.chanjetpay.result.GenericResult;
 import org.junit.Test;
 import org.junit.runner.RunWith;

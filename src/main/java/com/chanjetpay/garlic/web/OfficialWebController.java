@@ -1,14 +1,11 @@
 package com.chanjetpay.garlic.web;
 
-import com.chanjetpay.garlic.api.MemberService;
 import com.chanjetpay.garlic.api.OfficialService;
 import com.chanjetpay.garlic.common.CookieUtils;
 import com.chanjetpay.garlic.common.ResourceBundleUtils;
 import com.chanjetpay.garlic.dto.Oauth2AccessTokenDto;
 import com.chanjetpay.garlic.dto.WxOauth2Dto;
 import com.chanjetpay.garlic.dto.WxOfficialSignDto;
-import com.chanjetpay.garlic.dto.WxUserDto;
-import com.chanjetpay.result.BasicResult;
 import com.chanjetpay.result.GenericResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,9 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.net.URLDecoder;
 import java.net.URLEncoder;
-import java.util.Date;
 
 @Controller
 @RequestMapping("official-web")

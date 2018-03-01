@@ -144,27 +144,29 @@
 
 
 <script type="text/javascript">
+	var user = Math.random();
 	$(function(){
 		// function longPolling1(){
 		// 	$.get('comet/123/test', function(data){
 		// 		console.log(data);
-		// 		$('#n2').html(data);
+		// 		$('#n1').html(data);
 		// 		longPolling();
 		// 	});
 		// }
 		// longPolling();
 		
-		
 		function longPooling2(){
-			$.get('comet/12345/test2', function(data){
-				console.log(data);
-				$('#n1').html(data);
+			$.get('comet/' + user + '/test2/' + Math.random(), function(data){
+				// console.log(data);
+				$('#n2').html(data);
 			});
 		}
-
+		
+	  longPooling2();
+		
 	  var ref = setInterval(function(){
 			longPooling2();
-	  },10000);
+	  },1000);
 		
 	});
 	

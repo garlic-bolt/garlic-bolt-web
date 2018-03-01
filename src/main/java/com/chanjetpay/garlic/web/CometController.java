@@ -4,34 +4,42 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.async.WebAsyncTask;
 
 import java.util.concurrent.Callable;
+import java.util.concurrent.ConcurrentHashMap;
 
 @RestController
 @RequestMapping("comet")
 public class CometController {
 
-	private final Object BUFFER_LOCK = new Object();
+	private static final Object BUFFER_LOCK = new Object();
 
+	private static final ConcurrentHashMap<String, Object> LOCK_OBJECT_MAP = new ConcurrentHashMap<>();
 
-	@RequestMapping("/{testId}/test2")
-	public WebAsyncTask<String> test2(@PathVariable final String testId) {
-		WebAsyncTask<String> webAsyncTask = new WebAsyncTask<String>(3000,new Callable<String>() {
+	@RequestMapping("/{userId}/test2/{tamp}")
+	public WebAsyncTask<String> test2(@PathVariable final String userId, @PathVariable final String tamp) {
+		WebAsyncTask<String> webAsyncTask = new WebAsyncTask<String>(10000l,new Callable<String>() {
 			@Override
 			public String call() throws Exception {
 
-				synchronized (BUFFER_LOCK) {
-					BUFFER_LOCK.wait();
-					return "测试2 - " + testId + System.currentTimeMillis();
+				LOCK_OBJECT_MAP.put(userId + tamp, new Object());
+
+				System.out.println("test2 request size:"  + LOCK_OBJECT_MAP.size());
+
+				synchronized (LOCK_OBJECT_MAP.get(userId + tamp)) {
+					LOCK_OBJECT_MAP.get(userId + tamp).wait();
+					System.out.println("test2 接收通知");
+					return "测试2 - " + userId + System.currentTimeMillis();
 				}
 			}
 		});
 
 		//客户端超时失败或服务端成功返回数据都执行
-		//webAsyncTask.onCompletion(new Runnable() {
-		//	@Override
-		//	public void run() {
-		//		System.out.println("调用完成");
-		//	}
-		//});
+		webAsyncTask.onCompletion(new Runnable() {
+			@Override
+			public void run() {
+				LOCK_OBJECT_MAP.remove(userId + tamp);
+				System.out.println("test2 finish size:"  + LOCK_OBJECT_MAP.size());
+			}
+		});
 
 		//服务端超时时执行
 		//webAsyncTask.onTimeout(new Callable<String>() {
@@ -67,11 +75,15 @@ public class CometController {
 		};
 	}
 
-	@RequestMapping(value = "/{testId}/release", method = RequestMethod.GET)
-	public @ResponseBody String asyncRelease(@PathVariable final String testId){
-		synchronized (BUFFER_LOCK) {
-			BUFFER_LOCK.notifyAll();
-			return "" + System.currentTimeMillis();
+	@RequestMapping(value = "/{userId}/release", method = RequestMethod.GET)
+	public @ResponseBody String asyncRelease(@PathVariable final String userId){
+		for(String key : LOCK_OBJECT_MAP.keySet()){
+			if(key.startsWith(userId)){
+				synchronized (LOCK_OBJECT_MAP.get(key)) {
+					LOCK_OBJECT_MAP.get(key).notifyAll();
+				}
+			}
 		}
+		return "" + System.currentTimeMillis();
 	}
 }
