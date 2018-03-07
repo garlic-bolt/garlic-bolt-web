@@ -47,7 +47,7 @@ public class OfficialServiceFeignTest {
 	@Test
 	public void testCreateOperator(){
 		OperatorDto operatorDto = new OperatorDto();
-		operatorDto.setBlockId("1234");
+		operatorDto.setBlockCode("1234");
 		operatorDto.setOperatorId("zhangsan");
 		operatorDto.setPassword("zhangsan123");
 		operatorDto.setSalt("abcd");
