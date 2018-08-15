@@ -170,6 +170,15 @@
 		
 	});
 	
+  function longPolling3(){
+	  $.get('${pageContext.request.contextPath }/async/test', function(data){
+		  console.log(data);
+		  $('#n2').html(data);
+		  longPolling3();
+	  });
+  }
+  longPolling3();
+	
 	
 	
 	

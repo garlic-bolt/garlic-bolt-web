@@ -35,7 +35,7 @@
 	
 	<div class="ui-row">
 		<ul class="ui-tiled">
-			<li>xxx商户-套餐1</li>
+			<li th:text="${cashier.orderDesc}">xxx商户-套餐1</li>
 		</ul>
 	</div>
 	<div class="ui-row">
@@ -43,11 +43,11 @@
 	</div>
 	<div class="ui-row">
 		
-		<div class="ui-form ui-border-t">
+		<div class="ui-form ui-border-tb">
 			<form action="#">
 				<div class="ui-form-item ui-border-b">
-					<input type="text" placeholder="请输入金额" />
-					<a href="#" class="ui-icon-close">
+					<input id="input_amount" type="number" placeholder="请输入金额" th:value="${cashier.orderAmount}" />
+					<a id="a_close" href="javascript:void(0);" class="ui-icon-close">
 					</a>
 				</div>
 			</form>
@@ -58,115 +58,120 @@
 	<div class="ui-row">
 		&nbsp;
 	</div>
-
 	
-	<div class="ui-row">
+	<div id="balancePanel" class="ui-row pay" style="display: block;">
 		<ul class="ui-list ui-list-function ui-border-tb">
-			<li class="ui-border-t" onclick="alert(124)">
+			<li id="balancePay" class="ui-border-t" th:if="${cashier.registed}">
 				<div class="ui-list-img ui-tag-vip">
-					<span style="background-image:url(../static/vip_card.png)"></span>
+					<span style="background-image:url(../static/vip_card.png)" th:style="|background-image:url(${wallet.logo})|"></span>
 				</div>
+				
 				<div class="ui-list-info">
-					<h4 class="ui-nowrap">余额：88.00元</h4>
-					<p class="ui-nowrap">使用电子钱包付款</p>
+					<h4 class="ui-nowrap" th:text="${wallet.balance}">余额：88.00元</h4>
+					<p class="ui-nowrap" th:text="${wallet.desc}">使用电子钱包付款</p>
 				</div>
-				<div class="ui-btn">充值</div>
+				<a class="ui-btn" href="javascript:void(0);" th:if="${wallet.registed == false}">激活</a>
 			</li>
+			
 		</ul>
 	</div>
 	
-	<div class="ui-row">
-		<button class="ui-btn-lg ui-btn-primary">支付</button>
+	<div id="wxPanel" class="ui-row pay" style="display: none;">
+		<ul class="ui-list ui-list-function ui-border-tb">
+			<li id="wxPay" class="ui-border-t">
+				<div class="ui-list-img">
+					<span style="background-image:url(../static/vip_card.png)"></span>
+				</div>
+				<div class="ui-list-info">
+					<h4 class="ui-nowrap">微信</h4>
+					<p class="ui-nowrap">使用微信支付</p>
+				</div>
+				<div class="ui-btn">支付</div>
+			</li>
+		
+		</ul>
 	</div>
-	
 	
 	<div class="ui-row">
 		&nbsp;
 	</div>
 	
 	<div class="ui-row">
-		<ul class="ui-list ui-list-function ui-border-tb">
-			<li class="ui-border-t" onclick="alert(1234)">
-				<div class="ui-list-img">
-					<span style="background-image:url(../static/vip_card.png)"></span>
-				</div>
-				<div class="ui-list-info">
-					<h4 class="ui-nowrap">未开通</h4>
-					<p class="ui-nowrap">使用电子钱包付款</p>
-				</div>
-				<div class="ui-btn">激活</div>
-			</li>
-
-		</ul>
+		<button id="pay" class="ui-btn-lg ui-btn-primary">支付</button>
 	</div>
-
-	
 </section>
 
 
-
-<!--<section class="ui-container">
-	<ul class="ui-row">&nbsp;
-	</ul>
-	<ul class="ui-row">&nbsp;
-	</ul>
-	<ul class="ui-row">&nbsp;
-	</ul>
-	
-	<ul class="ui-row ui-whitespace">
-		<li class="ui-col ui-col">xxx商户-套餐1</li>
-	</ul>
-	<ul class="ui-row">&nbsp;
-	</ul>
-	<ul class="ui-row">&nbsp;
-	</ul>
-	<ul class="ui-row">&nbsp;
-	</ul>
-	<ul class="ui-row ui-whitespace">
-		<li class="ui-col ui-col">
+<div class="ui-actionsheet">
+	<div class="ui-actionsheet-cnt">
+		<h4>选择支付方式</h4>
+		<button onclick="choosePay('balance');">余额</button>
+		<button onclick="choosePay('wx')">微信</button>
 		
-		</li>
-	</ul>
-	<ul class="ui-row">&nbsp;
-	</ul>
-	<ul class="ui-row">&nbsp;
-	</ul>
-	<ul class="ui-row">&nbsp;
-	</ul>
-	<ul class="ui-row">&nbsp;
-	</ul>
-	<ul class="ui-row">&nbsp;
-	</ul>
-	<ul class="ui-row">&nbsp;
-	</ul>
-	
-	<ul class="ui-row ui-whitespace">
-	
-	</ul>
-	
-</section>-->
-
-	<div id="ui-loading" class="ui-loading-block">
-		<div class="ui-loading-cnt">
-			<i class="ui-loading-bright"></i>
-			<p>正在加载中...</p>
-		</div>
+		<button onclick="choosePay('')">取消</button>
 	</div>
-	<script type="text/javascript" class="demo-script">
+</div>
 
-		  $('.ui-loading').addClass('show');
-	  $('.ui-loading').removeClass('show');
+<div id="ui-loading" class="ui-loading-block">
+	<div class="ui-loading-cnt">
+		<i class="ui-loading-bright"></i>
+		<p>支付处理中...</p>
+	</div>
+</div>
 
-		
-		
-	  // var el = $.loading({content:'加载中...'});
-	  // el.on("loading:hide",function(){
-	  //     console.log("loading hide");
-	  // });
-	</script>
+<script type="text/javascript">
+	$(document).ready(function(){
+	  $('#a_close').click(function () {
+		  $('#input_amount').val('');
+	  });
 
+	  $('.ui-border-t').click(function () {
+		  $('.ui-actionsheet').addClass('show');
+	  });
 
+	  $('#pay').click(function () {
+		  $('.pay').each(function () {
+			  if ($(this).css('display') == 'block') {
 
+				  var amount = $('#input_amount').val();
+				  if (amount == null || amount == '') {
+					  amount = 0;
+				  }
+
+				  var id = $(this).attr("id");
+
+				  if (id == 'balancePanel') {
+					  pay('balance', amount);
+				  } else if (id == 'wxPanel') {
+					  pay('wx', amount);
+				  }
+			  }
+		  })
+
+	  });
+			
+	  function pay(payType, amount) {
+		  $('#ui-loading').addClass('show');
+		  alert(payType);
+		  $('#ui-loading').removeClass('show');
+	  }
+	  
+	});
+
+  function choosePay(payType) {
+	  if (payType == 'wx') {
+		  $('#balancePanel').css('display', 'none');
+		  $('#wxPanel').css('display', 'block');
+	  } else if (payType == 'balance') {
+		  $('#balancePanel').css('display', 'block');
+		  $('#wxPanel').css('display', 'none');
+	  }
+
+	  $('.ui-actionsheet').removeClass('show');
+  }
+  
+  
+</script>
 
 </body>
 </html>

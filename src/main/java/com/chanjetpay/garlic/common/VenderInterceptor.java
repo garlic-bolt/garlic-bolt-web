@@ -23,9 +23,9 @@ import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class OperatorInterceptor implements HandlerInterceptor {
+public class VenderInterceptor implements HandlerInterceptor {
 
-	private static final Logger logger = LoggerFactory.getLogger(OperatorInterceptor.class);
+	private static final Logger logger = LoggerFactory.getLogger(VenderInterceptor.class);
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {

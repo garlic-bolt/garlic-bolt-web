@@ -51,7 +51,7 @@ public class OfficialWebController {
 		GenericResult<String> result = officialService.wxOfficialSign(blockCode, wxOfficialSign);
 		if(result.isError()){
 			return result.getCode() + result.getDesc();
-		}else if(signature.equals(result.getValue())){
+		}else if(signature.equals(result.getData())){
 			return echostr;
 		}else {
 			return "error";
@@ -79,7 +79,7 @@ public class OfficialWebController {
 			throw new RuntimeException(result.getCode() + result.getDesc());
 		}
 
-		String uri = result.getValue().getRedirectUri();
+		String uri = result.getData().getRedirectUri();
 
 		return "redirect:" + uri;
 
@@ -99,7 +99,7 @@ public class OfficialWebController {
 			throw new RuntimeException(oauth2AccessTokenResult.getCode() + oauth2AccessTokenResult.getDesc());
 		}
 
-		String openId = oauth2AccessTokenResult.getValue().getOpenId();
+		String openId = oauth2AccessTokenResult.getData().getOpenId();
 		//记录openId到cookie
 		CookieUtils.addCookie(response, CookieUtils.COOKIE_USER_ID, openId, ResourceBundleUtils.getDomain());
 

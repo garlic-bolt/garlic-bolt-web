@@ -1,7 +1,7 @@
 package com.chanjetpay.garlic.config;
 
-import com.chanjetpay.garlic.common.OperatorInterceptor;
 import com.chanjetpay.garlic.common.UserInterceptor;
+import com.chanjetpay.garlic.common.VenderInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -16,8 +16,8 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 	}
 
 	@Bean
-	public OperatorInterceptor operatorInterceptor(){
-		return new OperatorInterceptor();
+	public VenderInterceptor venderInterceptor(){
+		return new VenderInterceptor();
 	}
 
 	@Override
@@ -28,7 +28,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 		registry.addInterceptor(userInterceptor())
 				.addPathPatterns("/member/**");
 
-		registry.addInterceptor(operatorInterceptor())
+		registry.addInterceptor(venderInterceptor())
 				.addPathPatterns("/vender/**")
 				.excludePathPatterns("/vender/login/**")
 				.excludePathPatterns("/vender/logout");
