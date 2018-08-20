@@ -7,6 +7,7 @@ import com.chanjetpay.garlic.dto.Oauth2AccessTokenDto;
 import com.chanjetpay.garlic.dto.WxOauth2Dto;
 import com.chanjetpay.garlic.dto.WxOfficialSignDto;
 import com.chanjetpay.result.GenericResult;
+import com.chanjetpay.result.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +50,7 @@ public class OfficialWebController {
 		wxOfficialSign.setTimestamp(timestamp);
 		wxOfficialSign.setNonce(nonce);
 		GenericResult<String> result = officialService.wxOfficialSign(blockCode, wxOfficialSign);
-		if(result.isError()){
+		if(result.getCode().equals(Result.SUCCESS)){
 			return result.getCode() + result.getDesc();
 		}else if(signature.equals(result.getData())){
 			return echostr;
@@ -75,7 +76,7 @@ public class OfficialWebController {
 
 		GenericResult<WxOauth2Dto> result = officialService.wxOfficialCode(blockCode, wxOauth2);
 
-		if(result.isError()){
+		if(!result.getCode().equals(Result.SUCCESS)){
 			throw new RuntimeException(result.getCode() + result.getDesc());
 		}
 
@@ -95,7 +96,7 @@ public class OfficialWebController {
 
 		logger.info("获取 oauth2AccessToken - result -{}",oauth2AccessTokenResult);
 
-		if (oauth2AccessTokenResult.isError()) {
+		if (!oauth2AccessTokenResult.getCode().equals(Result.SUCCESS)) {
 			throw new RuntimeException(oauth2AccessTokenResult.getCode() + oauth2AccessTokenResult.getDesc());
 		}
 
